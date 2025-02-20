@@ -1,5 +1,6 @@
+#include "sort.h"
 #include <stdlib.h>
-#include <stdio.h>
+#include <unistd.h>
 
 /*
  * print_array - Prints the array of integers.
@@ -8,16 +9,23 @@
  */
 void	print_array(int *array, size_t size)
 {
-	size_t i;
+	size_t	i;
+	int	nbr;
 
 	i = 0;
 	while (i < size)
 	{
-		printf("%d", array[i]);
+		nbr = array[i];
+		if (nbr > 9)
+			ft_putchar(nbr / 10 + '0');
+		ft_putchar(nbr % 10 + '0');
 		if (i < size - 1)
-			printf(" ");
+		{
+			ft_putchar(',');
+			ft_putchar(' ');
+		}
 		else
-			printf("\n");
+			ft_putchar('\n');
 		i++;
 	}
 }

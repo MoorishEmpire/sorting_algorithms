@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "sort.h"
 
 /*
@@ -12,7 +12,8 @@ void	bubble_sort(int *array, size_t size)
 	size_t	i;
 	size_t	j;
 	size_t	k;
-	int swap;
+	int	swap;
+	int	nbr;
 
 	i = 0;
 	while (i < size - 1)
@@ -28,11 +29,17 @@ void	bubble_sort(int *array, size_t size)
 				k = 0;
 				while (k < size)
 				{
-					printf("%d", array[k]);
+					nbr = array[k];
+					if (nbr > 9)
+						ft_putchar(nbr / 10 + '0');
+					ft_putchar(nbr % 10 + '0');
 					if (k < size - 1)
-						printf(" ");
+					{
+						ft_putchar(',');
+						ft_putchar(' ');
+					}
 					else
-						printf("\n");
+						ft_putchar('\n');
 					k++;
 				}
 			}
@@ -40,4 +47,13 @@ void	bubble_sort(int *array, size_t size)
 		}
 		i++;
 	}
+}
+
+/**
+ * ft_putchar - Write a charater to stdout.
+ * @c: The character to be written.
+ */
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
 }
