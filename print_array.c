@@ -16,6 +16,8 @@ void	print_array(int *array, size_t size)
 	while (i < size)
 	{
 		nbr = array[i];
+		if (nbr > 99)
+			ft_putchar(nbr / 100 + '0');
 		if (nbr > 9)
 			ft_putchar(nbr / 10 + '0');
 		ft_putchar(nbr % 10 + '0');
@@ -24,10 +26,9 @@ void	print_array(int *array, size_t size)
 			ft_putchar(',');
 			ft_putchar(' ');
 		}
-		else
-			ft_putchar('\n');
 		i++;
 	}
+	ft_putchar('\n');
 }
 
 /**
