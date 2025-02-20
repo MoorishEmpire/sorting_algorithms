@@ -13,7 +13,7 @@ struct listint_s
 	int		n;
 	listint_t	*next;
 	listint_t	*prev;
-}; 
+};
 
 void		insertion_sort_list(listint_t **list);
 listint_t	*create_listint(const int *array, size_t size);
