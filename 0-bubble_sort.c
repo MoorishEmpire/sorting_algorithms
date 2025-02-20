@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include "sort.h"
 
-/*
+/**
  * bubble_sort - sorts and array of integers in ascending order.
  * @array: The array to be sorted.
  * @size: The size of the array.
