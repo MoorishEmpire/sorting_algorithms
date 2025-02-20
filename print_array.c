@@ -29,3 +29,12 @@ void	print_array(int *array, size_t size)
 		i++;
 	}
 }
+
+/**
+ * ft_putchar - Write a charater to stdout.
+ * @c: The character to be written.
+ */
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
