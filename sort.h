@@ -8,6 +8,15 @@ void	bubble_sort(int *array, size_t size);
 void	print_array(int *array, size_t size);
 
 typedef struct listint_s listint_t;
+
+/**
+ * struct listint_s - Doubly linked list node
+ * @n: Integer stored in the node
+ * @next: Pointer to the next element in the list
+ * @prev: Pointer to the previous element in the list
+ *
+ * Description: Doubly linked list structure used for sorting algorithms.
+ */
 struct listint_s
 {
 	int		n;
