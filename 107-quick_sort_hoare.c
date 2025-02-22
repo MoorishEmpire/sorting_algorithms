@@ -35,7 +35,7 @@ void	quick_sort_hoare_util(int *array, size_t size, int low, int high)
 	if (low < high)
 	{
 		pivot_index = partitioning_hoare(array, size, low, high);
-		quick_sort_hoare_util(array, size, low, pivot_index);
+		quick_sort_hoare_util(array, size, low, pivot_index - 1);
 		quick_sort_hoare_util(array, size, pivot_index + 1, high);
 	}
 }
@@ -63,7 +63,7 @@ int	partitioning_hoare(int *array, size_t size, int low, int high)
 	{
 		do {
 			i++;
-		} while (array[i] < pivot);
+		} while (i < high && array[i] < pivot);
 		do {
 			j--;
 		} while (j >= low && array[j] > pivot);
