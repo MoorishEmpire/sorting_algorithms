@@ -1,19 +1,18 @@
 #include "sort.h"
 #include <stddef.h>
-#include <stdlib.h>
 
 /**
  * swap - Swaps two integers.
- * @nb1: Pointer to the first integer.
- * @nb2: Pointer to the second integer.
+ * @a: Pointer to the first integer.
+ * @b: Pointer to the second integer.
  */
-void	swap(int *nb1, int *nb2)
+void swap(int *a, int *b)
 {
 	int	swap;
 
-	swap = *nb1;
-	*nb1 = *nb2;
-	*nb2 = swap;
+	swap = *a;
+	*a = *b;
+	*b = swap;
 }
 
 /**
@@ -35,7 +34,7 @@ int partitioning_hoare(int *array, size_t size, int low, int high)
 	i = low - 1;
 	j = high + 1;
 
-	while (i < j)
+	while (1)
 	{
 		do {
 			i++;
@@ -45,13 +44,12 @@ int partitioning_hoare(int *array, size_t size, int low, int high)
 			j--;
 		} while (array[j] > pivot);
 
-		if (i < j)
-		{
-			swap(&array[i], &array[j]);
-			print_array(array, size);
-		}
+		if (i >= j)
+			return (i);
+
+		swap(&array[i], &array[j]);
+		print_array(array, size);
 	}
-	return (i);
 }
 
 /**
@@ -62,9 +60,9 @@ int partitioning_hoare(int *array, size_t size, int low, int high)
  * @low: The starting index of the sub-array.
  * @high: The ending index of the sub-array.
  */
-void	quick_sort_hoare_util(int *array, size_t size, int low, int high)
+void quick_sort_hoare_util(int *array, size_t size, int low, int high)
 {
-	int pivot_index;
+	int	pivot_index;
 
 	if (low < high)
 	{
@@ -75,20 +73,15 @@ void	quick_sort_hoare_util(int *array, size_t size, int low, int high)
 }
 
 /**
-* quick_sort_hoare - Sorts and array of integers in ascending order
-* using the Quick sort algorithm.
-* @array: The array to be sorted.
-* @size: The size of the array.
-*/
-void	quick_sort_hoare(int *array, size_t size)
+ * quick_sort_hoare - Sorts an array of integers in ascending order
+ * using the Quick sort algorithm with Hoare partition scheme.
+ * @array: The array to be sorted.
+ * @size: The size of the array.
+ */
+void quick_sort_hoare(int *array, size_t size)
 {
-	int	low;
-	int	high;
-
 	if (!array || size < 2)
 		return;
 
-	low = 0;
-	high = size - 1;
-	quick_sort_hoare_util(array, size, low, high);
+	quick_sort_hoare_util(array, size, 0, size - 1);
 }
