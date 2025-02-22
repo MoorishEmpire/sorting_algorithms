@@ -33,7 +33,7 @@ void	quick_sort_util(int *array, size_t size, int low, int high)
 
 	if (low < high)
 	{
-		j = partioning(array, size, low, high);
+		j = partitioning(array, size, low, high);
 		quick_sort_util(array, size, low, j - 1);
 		quick_sort_util(array, size, j + 1, high);
 
@@ -41,14 +41,14 @@ void	quick_sort_util(int *array, size_t size, int low, int high)
 }
 
 /**
- * partition - Partitions the array around a pivot element.
+ * partitioning - Partitions the array around a pivot element.
  * @array: The array to be partitioned.
  * @size: The size of the array.
  * @low: The starting index of the sub-array.
  * @high: The ending index of the sub-array.
  * Return: The index of the pivot element after partitioning.
  */
-int	partioning(int *array, size_t size, int low, int high)
+int	partitioning(int *array, size_t size, int low, int high)
 {
 	int i;
 	int j;
@@ -60,7 +60,7 @@ int	partioning(int *array, size_t size, int low, int high)
 
 	while (i < high)
 	{
-		if (array[i] < pivot)
+		if (array[i] <= pivot)
 		{
 			j++;
 			if (i != j)
